@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "893819627591",
+    "project_id": "ozonteckapp",
+    "storage_bucket": "ozonteckapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893819627591:android:0219ceab787cfb2390e962",
+        "android_client_info": {
+          "package_name": "com.example.ozonteckapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrXyoB9MQV2OJnProkPVCN3Aad5f_4BQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893819627591:android:0d090be539f4b0db90e962",
+        "android_client_info": {
+          "package_name": "com.example.registerapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrXyoB9MQV2OJnProkPVCN3Aad5f_4BQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

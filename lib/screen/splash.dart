@@ -51,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: []);
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 0, 43, 43),
+      backgroundColor: Theme.of(context).colorScheme.primary,
       body: Center(
         child: AnimatedBuilder(
           animation: _animation,

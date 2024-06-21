@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:registerapp/blocs/catalog_bloc/catalog_bloc.dart';
+import 'package:registerapp/blocs/get_product_bloc/get_product_bloc.dart';
 
 class CatalogScreen extends StatelessWidget {
   const CatalogScreen({super.key});
+  static const String id = 'catalog-screen';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: false,
-          elevation: 0,
-          backgroundColor: Color.fromARGB(255, 0, 95, 98),
-          foregroundColor: Colors.white,
-          title: const Text('Products'),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.search),
-            ),
-          ],
-        ),
-        body: Padding(
+      appBar: AppBar(
+        centerTitle: false,
+        elevation: 0,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Colors.white,
+        title: const Text('Our Catalog'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+          ),
+        ],
+      ),
+      body:  Padding(
           padding: const EdgeInsets.all(12.0),
-          child: BlocBuilder<CatalogBloc, CatalogState>(
+          child: BlocBuilder<GetProductBloc, GetProductState>(
             builder: (context, state) {
-              if (state is CatalogSuccess) {
+              if (state is GetProductSuccess) {
                 return GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
@@ -33,9 +34,9 @@ class CatalogScreen extends StatelessWidget {
                     mainAxisSpacing: 16,
                     childAspectRatio: 9 / 17,
                   ),
-                  itemCount: state.catalog.length,
+                  itemCount: state.products.length,
                   itemBuilder: (context, int i) {
-                    final catalog = state.catalog[i];
+                    final product = state.products[i];
                     return Material(
                       elevation: 3,
                       color: Colors.white,
@@ -44,7 +45,8 @@ class CatalogScreen extends StatelessWidget {
                       ),
                       child: InkWell(
                         borderRadius: BorderRadius.circular(20),
-                        onTap: () {},
+                        onTap: () {
+                        },
                         child: Container(
                           padding: const EdgeInsets.all(16),
                           height: 200,
@@ -53,7 +55,7 @@ class CatalogScreen extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Image.network(
-                                  catalog.imageUrl,
+                                  product.imageUrl,
                                   width: 100,
                                   height: 100,
                                   fit: BoxFit.contain,
@@ -71,7 +73,7 @@ class CatalogScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               Text(
-                                catalog.name,
+                                product.name,
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
                                   fontSize: 18,
@@ -80,13 +82,30 @@ class CatalogScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               Text(
-                                limitDescription(catalog.description),
+                                limitDescription(product.description),
                                 style: const TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                               const SizedBox(height: 5),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  const Text(
+                                    'R\$ 0,00',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                                  IconButton(
+                                    onPressed: () {
+                                    },
+                                    icon: const Icon(Icons.add_shopping_cart),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ),
@@ -94,7 +113,7 @@ class CatalogScreen extends StatelessWidget {
                     );
                   },
                 );
-              } else if (state is CatalogLoading) {
+              } else if (state is GetProductLoading) {
                 return const Center(child: CircularProgressIndicator());
               } else {
                 return const Center(child: Text('Error'));

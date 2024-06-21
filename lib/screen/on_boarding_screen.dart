@@ -47,23 +47,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const Text(
-                      'Welcome\nTo Ozonteck',
+                      'The best Ozon \nproducts in the world!',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                           fontSize: 32),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text(
-                      'The best\nOzon products\nin the world!',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.yellow,
-                          fontSize: 28),
                     ),
                     const SizedBox(
                       height: 20,
@@ -80,7 +69,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const Text(
-                      'Beste products',
+                      'Best products',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -132,7 +121,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const Text(
-                      'Experience the future',
+                      'Experience the \nfuture',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -183,20 +172,21 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 DotsIndicator(
                   dotsCount: 5,
                   position: scrollerPosition,
-                  decorator: const DotsDecorator(
-                    activeColor: Color.fromARGB(255, 7, 190, 141),
+                  decorator: DotsDecorator(
+                    activeColor: Theme.of(context).colorScheme.primary,
                   ),
                 ),
+                const SizedBox(height: 20),
                 scrollerPosition == 4
                     ? Padding(
                         padding: const EdgeInsets.only(left: 30, right: 30),
                         child: ElevatedButton(
                           style: ButtonStyle(
                             backgroundColor: WidgetStateProperty.all(
-                                const Color.fromARGB(255, 7, 177, 109)),
+                                Theme.of(context).colorScheme.secondary),
                           ),
                           child: const Text(
-                            'Start Shopping',
+                            'Register',
                             style: TextStyle(color: Colors.white),
                           ),
                           onPressed: () {
@@ -204,19 +194,25 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           },
                         ),
                       )
-                    : TextButton(
-                        child: const Text(
-                          'SKIP TO THE APP >',
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.blue
+                    : Padding(
+                        padding: const EdgeInsets.only(left: 30, right: 30),
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: WidgetStateProperty.all(
+                              Theme.of(context).colorScheme.primary),
                           ),
-                        ),
-                        onPressed: () {
-                          onButtonPressed(context);
+                          child: const Text(
+                            'Go to app',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          onPressed: () {
+                            onButtonPressed(context);
                         },
                       ),
-                const SizedBox(height: 60,)
+                    ),
+                const SizedBox(height: 150,)
               ],
             ),
           )
@@ -236,7 +232,7 @@ class OnBoardPage extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          color: const Color.fromARGB(255, 0, 190, 207),
+          color: Theme.of(context).colorScheme.onPrimary,
           child: Center(child: bordColumn),
         ),
         Align(
@@ -245,7 +241,6 @@ class OnBoardPage extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             height: 150,
             decoration: const BoxDecoration(
-              color: Colors.white,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30),
                 topRight: Radius.circular(30),

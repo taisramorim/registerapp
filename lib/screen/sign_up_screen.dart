@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registerapp/blocs/sign_up_bloc/sign_up_bloc.dart';
 import 'package:registerapp/models/user/my_user.dart';
+import 'package:registerapp/screen/main_screen.dart';
 import 'package:registerapp/screen/sign_in_screen.dart';
 import 'package:registerapp/utils/strings.dart';
 import 'package:registerapp/utils/textfield.dart';
@@ -43,10 +44,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               setState(() {
                 signUpRequired = false;
               });
-            } else if(state is SignUpProcess) {
-              setState(() {
-                signUpRequired = true;
-              });
+            } else if(state is SignUpProcess) {              
+              Navigator.pushReplacementNamed(context, MainScreen.id);
             } else if( state is SignUpFailure) {
               return;
             }

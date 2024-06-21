@@ -1,21 +1,23 @@
-class CatalogModel {
-  final String id;
+import 'package:registerapp/models/product/product_entity.dart';
+
+class Product {
+  final String productId;
   final String name;
   final String description;
   final String imageUrl;
   final String category;
 
-  CatalogModel({
-    required this.id,
+  Product({
+    required this.productId,
     required this.name,
     required this.description,
     required this.imageUrl,
     required this.category,
   });
 
-  CatalogModel toEntity() {
-    return CatalogModel(
-      id: id,
+  ProductEntity toEntity() {
+    return ProductEntity(
+      productId: productId,
       name: name,
       description: description,
       imageUrl: imageUrl,
@@ -23,9 +25,9 @@ class CatalogModel {
     );
   }
 
-  static CatalogModel fromEntity(CatalogModel entity) {
-    return CatalogModel(
-      id: entity.id,
+  static Product fromEntity(ProductEntity entity) {
+    return Product(
+      productId: entity.productId,
       name: entity.name,
       description: entity.description,
       imageUrl: entity.imageUrl,

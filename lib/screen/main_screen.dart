@@ -77,18 +77,19 @@ class _MainScreenState extends State<MainScreen> {
                 //backgroundColor: Colors.green,
               ),
               BottomNavigationBarItem(
-                icon: Icon(_selectedIndex == 4 ? Icons.person_2 : Icons.person_2_outlined),
+                icon: Icon(_selectedIndex == 3 ? Icons.person_2 : Icons.person_2_outlined),
                 label: 'Account',
                 //backgroundColor: Colors.pink,
               ),
             ],
             currentIndex: _selectedIndex,
-            selectedItemColor: const Color.fromARGB(255, 3, 101, 98),
+            selectedItemColor: Theme.of(context).colorScheme.onSecondary,
             showUnselectedLabels: true,
-            unselectedItemColor: Colors.grey,
+            unselectedItemColor: Theme.of(context).colorScheme.outline,
             onTap: _onItemTapped,
             type: BottomNavigationBarType.fixed,
             selectedFontSize: 12,
+            backgroundColor: Theme.of(context).colorScheme.primary,
 
           ),
         )

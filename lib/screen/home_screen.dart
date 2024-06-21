@@ -4,31 +4,27 @@ import 'on_boarding_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-  static const String id = 'home-screen';
+  static const String id = 'home-screen';  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 4, 56, 62),
+      backgroundColor: Theme.of(context).colorScheme.outline,
       //I want to reduce this app bar height
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40),
         child: AppBar(
-          backgroundColor: Color.fromARGB(255, 0, 93, 105),
+          backgroundColor: Theme.of(context).colorScheme.primary,
           elevation: 0,
           centerTitle: true,
           foregroundColor: Colors.white,
           title: const Text('Ozonteck',style: TextStyle(letterSpacing: 2),),
           actions: [
             IconButton(
-              icon: const Icon(Icons.payment),
-              onPressed: (){},
-            ),
-            IconButton(
               onPressed: () {
                 Navigator.pushReplacementNamed(context, OnBoardingScreen.id);
               }, 
-              icon: Icon(Icons.logout)
+              icon: const Icon(Icons.logout)
             )
           ],
         ),

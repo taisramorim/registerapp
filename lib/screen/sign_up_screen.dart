@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registerapp/blocs/sign_up_bloc/sign_up_bloc.dart';
-import 'package:registerapp/models/user/user_model.dart';
-import 'package:registerapp/screen/main_screen.dart';
+import 'package:registerapp/models/user/my_user.dart';
 import 'package:registerapp/screen/sign_in_screen.dart';
 import 'package:registerapp/utils/strings.dart';
 import 'package:registerapp/utils/textfield.dart';
@@ -201,7 +200,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             child: TextButton(
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  UserModel myUser = UserModel.empty;
+                                  MyUser myUser = MyUser.empty;
                                   myUser = myUser.copyWith(
                                     email: emailController.text,
                                     name: nameController.text,

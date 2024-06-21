@@ -1,6 +1,6 @@
 part of 'sign_up_bloc.dart';
 
-abstract class SignUpEvent extends Equatable {
+sealed class SignUpEvent extends Equatable {
   const SignUpEvent();
 
   @override
@@ -8,10 +8,9 @@ abstract class SignUpEvent extends Equatable {
 }
 
 class SignUpRequired extends SignUpEvent {
-  final UserModel user;
+  final MyUser user;
   final String password;
 
   const SignUpRequired(this.user, this.password);
 }
-
 

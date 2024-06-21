@@ -192,7 +192,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         padding: const EdgeInsets.only(left: 30, right: 30),
                         child: ElevatedButton(
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
+                            backgroundColor: WidgetStateProperty.all(
                                 const Color.fromARGB(255, 7, 177, 109)),
                           ),
                           child: const Text(

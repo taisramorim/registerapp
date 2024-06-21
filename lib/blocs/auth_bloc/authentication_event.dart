@@ -11,7 +11,5 @@ abstract class AuthenticationEvent extends Equatable {
 class AuthenticationUserChanged extends AuthenticationEvent {
   const AuthenticationUserChanged(this.user);
 
-  final UserModel? user;
+  final User? user;
 }
-
-class AppStarted extends AuthenticationEvent {}

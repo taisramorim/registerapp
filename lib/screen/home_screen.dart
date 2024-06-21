@@ -4,10 +4,12 @@ import 'on_boarding_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+  static const String id = 'home-screen';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 4, 56, 62),
       //I want to reduce this app bar height
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(40),

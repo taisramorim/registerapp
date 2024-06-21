@@ -1,10 +1,10 @@
-import 'user_model_entity.dart';
+import 'my_user_entity.dart';
 
-class UserModel {
+class MyUser {
   final String id;
   final String name;
-  String? email;
-  final String imageUrl;
+  final String email;
+  String? picture;
   final String username;
   final String password;
   final String document;
@@ -14,11 +14,11 @@ class UserModel {
   final DateTime birthDate;
   final String sponsor;
 
-  UserModel({
+  MyUser({
     required this.id,
     required this.name,
-    this.email,
-    required this.imageUrl,
+    required this.email,
+    this.picture,
     required this.username,
     required this.password,
     required this.document,
@@ -29,11 +29,12 @@ class UserModel {
     required this.sponsor,
   });
 
-  static final empty = UserModel(
+  // Empty user which represents an unauthenticated user
+  static final empty = MyUser(
     id: '',
     name: '',
     email: '',
-    imageUrl: '',
+    picture: '',
     username: '',
     password: '',
     document: '',
@@ -44,11 +45,11 @@ class UserModel {
     sponsor: '',
   );
 
-  UserModel copyWith({
+  MyUser copyWith({
     String? id,
     String? name,
     String? email,
-    String? imageUrl,
+    String? picture,
     String? username,
     String? password,
     String? document,
@@ -58,10 +59,11 @@ class UserModel {
     DateTime? birthDate,
     String? sponsor,
   }) {
-    return UserModel(
+    return MyUser(
       id: id ?? this.id, 
       name: name ?? this.name, 
-      imageUrl: imageUrl ?? this.imageUrl, 
+      email: email ?? this.email,
+      picture: picture ?? this.picture, 
       username: username ?? this.username, 
       password: password ?? this.password, 
       document: document ?? this.document, 
@@ -73,16 +75,16 @@ class UserModel {
     );
   }
 
-  bool get isEmpty => this == UserModel.empty;
+  bool get isEmpty => this == MyUser.empty;
 
-  bool get isNotEmpty => this != UserModel.empty;
+  bool get isNotEmpty => this != MyUser.empty;
 
-  UserModelEntity toEntity() {
-    return UserModelEntity(
+  MyUserEntity toEntity() {
+    return MyUserEntity(
       id: id,
       name: name,
       email: email,
-      imageUrl: imageUrl,
+      picture: picture,
       username: username,
       password: password,
       document: document,
@@ -94,12 +96,12 @@ class UserModel {
     );
   }
 
-  static UserModel fromEntity(UserModelEntity entity) {
-    return UserModel(
+  static MyUser fromEntity(MyUserEntity entity) {
+    return MyUser(
       id: entity.id,
       name: entity.name,
       email: entity.email,
-      imageUrl: entity.imageUrl,
+      picture: entity.picture,
       username: entity.username,
       password: entity.password,
       document: entity.document,
@@ -110,4 +112,19 @@ class UserModel {
       sponsor: entity.sponsor
     );
   }
+
+  List<Object?> get props => [
+    id,
+    name,
+    email,
+    picture,
+    username,
+    password,
+    document,
+    phone,
+    city,
+    gender,
+    birthDate,
+    sponsor
+  ];
 }

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registerapp/blocs/auth_bloc/authentication_bloc.dart';
+import 'package:registerapp/blocs/my_user_bloc/my_user_bloc.dart';
 import 'package:registerapp/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:registerapp/blocs/sign_up_bloc/sign_up_bloc.dart';
 import 'package:registerapp/blocs/simple_bloc_observer.dart';
-import 'package:registerapp/blocs/user_bloc/user_bloc.dart';
 import 'package:registerapp/repositories/user/firebase_user_repo.dart';
 import 'package:registerapp/repositories/user/user_repo.dart';
 import 'package:registerapp/screen/sign_in_screen.dart';
@@ -37,7 +37,7 @@ class MainApp extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) => AuthenticationBloc(
-              userRepository: userRepository,
+              myUserRepository: userRepository,
             ),
           ),
           BlocProvider(
@@ -51,8 +51,8 @@ class MainApp extends StatelessWidget {
             ),
           ),
           BlocProvider(
-            create: (context) => UserBloc(
-              userModelRepository: userRepository,
+            create: (context) => MyUserBloc(
+              myUserRepository: userRepository,
             ),
           ),
           // Add the catalog_bloc here if it's required globally

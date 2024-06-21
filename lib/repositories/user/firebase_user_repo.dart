@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:registerapp/models/user/user_model.dart';
-import 'package:registerapp/models/user/user_model_entity.dart';
+import 'package:registerapp/models/user/my_user.dart';
+import 'package:registerapp/models/user/my_user_entity.dart';
 import 'package:registerapp/repositories/user/user_repo.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,7 +10,7 @@ class FirebaseUserRepository implements UserRepository {
   FirebaseUserRepository({
     FirebaseAuth? firebaseAuth,
   }) : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
- 
+
   final FirebaseAuth _firebaseAuth;
   final usersCollection = FirebaseFirestore.instance.collection('users');
 
@@ -23,42 +23,22 @@ class FirebaseUserRepository implements UserRepository {
   }
 
   @override
-  UserModel? get currentUser {
-    final firebaseUser = _firebaseAuth.currentUser;
-    return firebaseUser == null ? null : UserModel.fromEntity(firebaseUser as UserModelEntity);
-  }
-
-  @override
-  Future<UserModel> getUser(String userModelId) async {
-    try {
-      return usersCollection.doc(userModelId).get().then((value) =>
-        UserModel.fromEntity(UserModelEntity.fromDocument(value.data()!))
-      );
-    } catch (e) {
-      log(e.toString());
-
-      
-      rethrow;
-    }
-  }
-
-  @override
-  Future<UserModel> signUp(UserModel userModel, String password) async {
+  Future<MyUser> signUp(MyUser myUser, String password) async {
     try {
       UserCredential user = await _firebaseAuth.createUserWithEmailAndPassword(
-        email: userModel.email!, 
+        email: myUser.email, 
         password: password
         );
-        userModel = userModel.copyWith(
+        myUser = myUser.copyWith(
           id: user.user!.uid,        
           );
-          return userModel;
+          return myUser;
     } catch (e) {
       log(e.toString());
       rethrow;
       }
   }
-
+  
   @override
   Future<void> signIn(String email, String password) async {
     try {
@@ -73,7 +53,7 @@ class FirebaseUserRepository implements UserRepository {
     }
 
   @override
-  Future<void> signOut() async {
+  Future<void> logOut() async {
     try {
       await _firebaseAuth.signOut();
     } catch (e) {
@@ -81,9 +61,21 @@ class FirebaseUserRepository implements UserRepository {
       rethrow;
       }
   }
+
+  @override
+  Future<void> resetPassword(String email) async {
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(
+        email: email
+        );
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
   
   @override
-  Future<void> setUser(UserModel user) async {
+  Future<void> setUserData(MyUser user) async {
     try {
       await usersCollection.doc(user.id).set(user.toEntity().toDocument());
     } catch (e) {
@@ -91,4 +83,17 @@ class FirebaseUserRepository implements UserRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<MyUser> getMyUser(String myUserId) async {
+    try {
+      return usersCollection.doc(myUserId).get().then((value) =>
+        MyUser.fromEntity(MyUserEntity.fromDocument(value.data()!))
+      );
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
+  }
+ 
 }

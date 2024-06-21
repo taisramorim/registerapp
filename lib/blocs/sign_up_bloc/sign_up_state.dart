@@ -1,6 +1,6 @@
 part of 'sign_up_bloc.dart';
 
-abstract class SignUpState extends Equatable {
+sealed class SignUpState extends Equatable {
   const SignUpState();
   
   @override
@@ -10,13 +10,5 @@ abstract class SignUpState extends Equatable {
 class SignUpInitial extends SignUpState {}
 
 class SignUpSuccess extends SignUpState {}
-class SignUpFailure extends SignUpState {  
-  final String error;
-
-  const SignUpFailure({required this.error});
-
-  @override
-  List<Object> get props => [error];
-}
-
+class SignUpFailure extends SignUpState {}
 class SignUpProcess extends SignUpState {}

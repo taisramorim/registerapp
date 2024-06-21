@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:registerapp/models/user/user_model.dart';
+import 'package:registerapp/models/user/my_user.dart';
 import 'package:registerapp/repositories/user/user_repo.dart';
 
 part 'sign_up_event.dart';
@@ -16,11 +16,11 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     on<SignUpRequired>((event, emit) async {
       emit(SignUpProcess());
       try {
-        UserModel user = await _userRepository.signUp(event.user, event.password);
-        await _userRepository.setUser(user);
+        MyUser user = await _userRepository.signUp(event.user, event.password);
+        await _userRepository.setUserData(user);
         emit(SignUpSuccess());
       } catch (e) {
-        emit(SignUpFailure( error: e.toString()));
+        emit(SignUpFailure());
       }
     });
   }

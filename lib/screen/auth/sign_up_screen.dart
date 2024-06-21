@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registerapp/blocs/sign_up_bloc/sign_up_bloc.dart';
 import 'package:registerapp/models/user/my_user.dart';
 import 'package:registerapp/screen/main_screen.dart';
-import 'package:registerapp/screen/sign_in_screen.dart';
+import 'package:registerapp/screen/auth/sign_in_screen.dart';
 import 'package:registerapp/utils/strings.dart';
 import 'package:registerapp/utils/textfield.dart';
 

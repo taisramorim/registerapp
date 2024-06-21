@@ -2,7 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:registerapp/screen/sign_up_screen.dart';
+import 'package:registerapp/screen/auth/sign_up_screen.dart';
 
 import 'main_screen.dart';
 

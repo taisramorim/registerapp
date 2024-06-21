@@ -11,11 +11,11 @@ import 'package:registerapp/blocs/simple_bloc_observer.dart';
 import 'package:registerapp/repositories/product/firebase_product_repo.dart';
 import 'package:registerapp/repositories/user/firebase_user_repo.dart';
 import 'package:registerapp/repositories/user/user_repo.dart';
-import 'package:registerapp/screen/sign_in_screen.dart';
+import 'package:registerapp/screen/auth/sign_in_screen.dart';
 
 import 'screen/main_screen.dart';
 import 'screen/on_boarding_screen.dart';
-import 'screen/sign_up_screen.dart';
+import 'screen/auth/sign_up_screen.dart';
 import 'screen/splash.dart';
 
 void main() async {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'account_screen.dart';
-import 'catalog_screen.dart';
+import 'products/catalog_screen.dart';
 import 'home_screen.dart';
 import 'network_screen.dart';
 import 'on_boarding_screen.dart';

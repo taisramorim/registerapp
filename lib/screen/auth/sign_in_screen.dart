@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registerapp/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:registerapp/screen/main_screen.dart';
-import 'package:registerapp/screen/sign_up_screen.dart';
+import 'package:registerapp/screen/auth/sign_up_screen.dart';
 import 'package:registerapp/utils/strings.dart';
 import 'package:registerapp/utils/textfield.dart';
 
